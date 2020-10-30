@@ -42,7 +42,7 @@
 
 
                     <ComboBox x:Name="colorComboBox" Width="200"
-                        Header="Orders" PlaceholderText="---Select Order---"
+                        Header="Orders" PlaceholderText="---Select Order---" SelectionChanged="ColorComboBox_SelectionChanged"
                         >
                         <ComboBoxItem></ComboBoxItem>
                     </ComboBox>
@@ -58,7 +58,7 @@
 
 
                     <ComboBox x:Name="TransComboBox" Width="200"
-                        Header="Transporter" PlaceholderText="---Select Transpoter---"
+                        Header="Transporter" PlaceholderText="---Select Transpoter---" SelectionChanged="TransComboBox_SelectionChanged"
                        >
                         <ComboBoxItem></ComboBoxItem>
                     </ComboBox>
@@ -68,7 +68,7 @@
 
 
                     <ComboBox x:Name="SupplierComboBox" Width="200"
-                        Header="Suppliers" PlaceholderText="---Select Supplier---"
+                        Header="Suppliers" PlaceholderText="---Select Supplier---" SelectionChanged="SupplierComboBox_SelectionChanged"
                         >
                         <ComboBoxItem></ComboBoxItem>
                     </ComboBox>
@@ -76,6 +76,9 @@
                 </StackPanel>
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Left"><Run Text="Arrival Date"/></TextBlock>
+                    <d:DatePicker Name="datePacked" HorizontalAlignment="Left"  MinWidth="200">
+                        
+                    </d:DatePicker> 
 
                     <!--<Custom1:DateEdit Name="datePacked" HorizontalAlignment="Left"  MinWidth="200"/>-->
 
