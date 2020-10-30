@@ -169,4 +169,12 @@
     <value>Dispatch</value>
     <comment>Navigation view item name for Dispatch</comment>
   </data>
+  <data name="DataTable.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Table showing sample sales data</value>
+    <comment>Automation name (and description) for the DataGrid page content</comment>
+  </data>
+  <data name="Shell_DataGrid.Content" xml:space="preserve">
+    <value>DataGrid</value>
+    <comment>Navigation view item name for DataGrid</comment>
+  </data>
 </root>

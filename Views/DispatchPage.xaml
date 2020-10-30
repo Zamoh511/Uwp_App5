@@ -4,15 +4,40 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls11="using:Microsoft.UI.Xaml.Controls"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--
-                The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.
-            -->
+
+
+            <controls11:TabView>
+                <controls11:TabViewItem Header="Tab 2">
+                   
+                  
+
+                </controls11:TabViewItem>
+                
+                <controls11:TabViewItem Header="Tab 1">
+                    <Canvas>
+                        <StackPanel>
+                            <StackPanel>
+                                <TextBlock HorizontalAlignment="Left" ><Run Text="Truck Registration1"/></TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock HorizontalAlignment="Left" ><Run Text="Truck Registration2"/></TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock HorizontalAlignment="Left" ><Run Text="Truck Registration3"/></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        
+                    </Canvas>
+
+                </controls11:TabViewItem>
+            </controls11:TabView>
+            
         </Grid>
     </Grid>
 </Page>

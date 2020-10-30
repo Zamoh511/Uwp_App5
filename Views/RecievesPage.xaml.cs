@@ -19,7 +19,10 @@ namespace Uwp_App5.Views
             PopulateSupplierCombobox();
             PopulateTransCombobox();
 
+
         }
+
+        
         const string connectionString = @"XpoProvider=MSSqlServer;data source=DESKTOP-32QVBUV\SQL2017;user id=201619;password=pPqtKc19;initial catalog=RapidCM_PGS_Dev;Persist Security Info=true";
 
         ObservableCollection<Order_OrderIn> Order_OrderIns = new ObservableCollection<Order_OrderIn>();
@@ -39,7 +42,7 @@ namespace Uwp_App5.Views
                     XPQuery<Library_Supplier> L_items = new XPQuery<Library_Supplier>(uow);
                     Library_Supplier L_SearchItem = L_items.FirstOrDefault(i => i.Name == (SupplierComboBox.SelectedValue.ToString()));
 
-                    //dataGrid1.ItemsSource = new XPCollection<Product_ProductReceive>(uow);
+                    dataGrid1.ItemsSource = new XPCollection<Product_ProductReceive>(uow);
                     XPQuery<Library_Transporter> Trans_items = new XPQuery<Library_Transporter>(uow);
                     Library_Transporter LT_SearchItem = Trans_items.FirstOrDefault(i => i.Name == (TransComboBox.SelectedValue.ToString()));
 
