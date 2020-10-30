@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using Uwp_App5.RapidCM_PGS_Dev;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Uwp_App5.Views
 {
@@ -19,6 +20,7 @@ namespace Uwp_App5.Views
             PopulateSupplierCombobox();
             PopulateTransCombobox();
             PopulateGridControl();
+            PopulateImgCombobox();
 
         }
         const string connectionString = @"XpoProvider=MSSqlServer;data source=DESKTOP-32QVBUV\SQL2017;user id=201619;password=pPqtKc19;initial catalog=RapidCM_PGS_Dev;Persist Security Info=true";
@@ -134,6 +136,30 @@ namespace Uwp_App5.Views
                     foreach (string item in list.Distinct())
                     {
                         colorComboBox.Items.Add(item);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+        public void PopulateImgCombobox()
+        {
+            var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+
+            try
+            {
+                using (var uow = new UnitOfWork(inMemoryDAL))
+                {
+
+                    XPCollection<Library_Site> sites = new XPCollection<Library_Site>(uow);
+                    var list = sites.Select(i => new { BitmapImage = new BitmapImage(new Uri(i.HeaderFithLine)), i.Name }).ToList();
+                    //colorComboBox.Items.Clear();
+                    foreach (var item in list.Distinct())
+                    {
+                        ImgCombobox.Items.Add(item);
                     }
 
                 }

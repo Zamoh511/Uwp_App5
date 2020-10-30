@@ -41,6 +41,19 @@
                             <TextBlock HorizontalAlignment="Left"><Run Text="Driver Name"/></TextBlock>
                             <TextBox HorizontalAlignment="Left" MinWidth="200" x:Name="Newnew"  />
                         </StackPanel>
+                        <StackPanel  Margin="5">
+                            <ComboBox x:Name="ImgCombobox" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding BitmapImage}" Width="70" Height="60"/>
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                           
+                        </StackPanel>
 
 
                         <StackPanel Margin="5">
