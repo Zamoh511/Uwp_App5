@@ -18,6 +18,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>Uwp_App5_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxGeneratePrisForPortableLibrariesEnabled>false</AppxGeneratePrisForPortableLibrariesEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -116,6 +117,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="DevExpress.Xpo">
+      <Version>19.2.10</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
     </PackageReference>
@@ -139,6 +143,490 @@
     <Compile Include="EventHandlers\CameraControlEventArgs.cs" />
     <Compile Include="Helpers\CameraOrientationExtensions.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
+    <Compile Include="ORMDataModel2Code\AccessControl.cs" />
+    <Compile Include="ORMDataModel2Code\AccessControl.Designer.cs">
+      <DependentUpon>AccessControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\AccessControlExit.cs" />
+    <Compile Include="ORMDataModel2Code\AccessControlExit.Designer.cs">
+      <DependentUpon>AccessControlExit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Analysis.cs" />
+    <Compile Include="ORMDataModel2Code\Analysis.Designer.cs">
+      <DependentUpon>Analysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\AuditDataItemPersistent.cs" />
+    <Compile Include="ORMDataModel2Code\AuditDataItemPersistent.Designer.cs">
+      <DependentUpon>AuditDataItemPersistent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\AuditedObjectWeakReference.cs" />
+    <Compile Include="ORMDataModel2Code\AuditedObjectWeakReference.Designer.cs">
+      <DependentUpon>AuditedObjectWeakReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\BlockWeigh.cs" />
+    <Compile Include="ORMDataModel2Code\BlockWeigh.Designer.cs">
+      <DependentUpon>BlockWeigh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\BookingReference_ProductDispatch.cs" />
+    <Compile Include="ORMDataModel2Code\BookingReference_ProductDispatch.Designer.cs">
+      <DependentUpon>BookingReference_ProductDispatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\BookingReference_ProductDispatch_Lte.cs" />
+    <Compile Include="ORMDataModel2Code\BookingReference_ProductDispatch_Lte.Designer.cs">
+      <DependentUpon>BookingReference_ProductDispatch_Lte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Brereton.cs" />
+    <Compile Include="ORMDataModel2Code\Brereton.Designer.cs">
+      <DependentUpon>Brereton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ConnectionHelper.cs" />
+    <Compile Include="ORMDataModel2Code\Container.cs" />
+    <Compile Include="ORMDataModel2Code\Container.Designer.cs">
+      <DependentUpon>Container.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Container_BookingTransfer.cs" />
+    <Compile Include="ORMDataModel2Code\Container_BookingTransfer.Designer.cs">
+      <DependentUpon>Container_BookingTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Container_EmptyIn.cs" />
+    <Compile Include="ORMDataModel2Code\Container_EmptyIn.Designer.cs">
+      <DependentUpon>Container_EmptyIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Container_EmptyOut.cs" />
+    <Compile Include="ORMDataModel2Code\Container_EmptyOut.Designer.cs">
+      <DependentUpon>Container_EmptyOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Container_FullIn.cs" />
+    <Compile Include="ORMDataModel2Code\Container_FullIn.Designer.cs">
+      <DependentUpon>Container_FullIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Container_FullOut.cs" />
+    <Compile Include="ORMDataModel2Code\Container_FullOut.Designer.cs">
+      <DependentUpon>Container_FullOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Container_Packed.cs" />
+    <Compile Include="ORMDataModel2Code\Container_Packed.Designer.cs">
+      <DependentUpon>Container_Packed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Container_Transfer.cs" />
+    <Compile Include="ORMDataModel2Code\Container_Transfer.Designer.cs">
+      <DependentUpon>Container_Transfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Container_Trim.cs" />
+    <Compile Include="ORMDataModel2Code\Container_Trim.Designer.cs">
+      <DependentUpon>Container_Trim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\DashboardData.cs" />
+    <Compile Include="ORMDataModel2Code\DashboardData.Designer.cs">
+      <DependentUpon>DashboardData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Document_BookingReference.cs" />
+    <Compile Include="ORMDataModel2Code\Document_BookingReference.Designer.cs">
+      <DependentUpon>Document_BookingReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Document_Orders.cs" />
+    <Compile Include="ORMDataModel2Code\Document_Orders.Designer.cs">
+      <DependentUpon>Document_Orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Event.cs" />
+    <Compile Include="ORMDataModel2Code\Event.Designer.cs">
+      <DependentUpon>Event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ExpectedProductItem.cs" />
+    <Compile Include="ORMDataModel2Code\ExpectedProductItem.Designer.cs">
+      <DependentUpon>ExpectedProductItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ExpectedTrucks.cs" />
+    <Compile Include="ORMDataModel2Code\ExpectedTrucks.Designer.cs">
+      <DependentUpon>ExpectedTrucks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\FileData.cs" />
+    <Compile Include="ORMDataModel2Code\FileData.Designer.cs">
+      <DependentUpon>FileData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\HatchScan.cs" />
+    <Compile Include="ORMDataModel2Code\HatchScan.Designer.cs">
+      <DependentUpon>HatchScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\HCategory.cs" />
+    <Compile Include="ORMDataModel2Code\HCategory.Designer.cs">
+      <DependentUpon>HCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Incident.cs" />
+    <Compile Include="ORMDataModel2Code\Incident.Designer.cs">
+      <DependentUpon>Incident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Invoice.cs" />
+    <Compile Include="ORMDataModel2Code\Invoice.Designer.cs">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ItemInspection.cs" />
+    <Compile Include="ORMDataModel2Code\ItemInspection.Designer.cs">
+      <DependentUpon>ItemInspection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\KpiDefinition.cs" />
+    <Compile Include="ORMDataModel2Code\KpiDefinition.Designer.cs">
+      <DependentUpon>KpiDefinition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\KpiHistoryItem.cs" />
+    <Compile Include="ORMDataModel2Code\KpiHistoryItem.Designer.cs">
+      <DependentUpon>KpiHistoryItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\KpiInstance.cs" />
+    <Compile Include="ORMDataModel2Code\KpiInstance.Designer.cs">
+      <DependentUpon>KpiInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\KpiScorecard.cs" />
+    <Compile Include="ORMDataModel2Code\KpiScorecard.Designer.cs">
+      <DependentUpon>KpiScorecard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\KpiScorecardScorecards_KpiInstanceIndicators.cs" />
+    <Compile Include="ORMDataModel2Code\KpiScorecardScorecards_KpiInstanceIndicators.Designer.cs">
+      <DependentUpon>KpiScorecardScorecards_KpiInstanceIndicators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_BookingType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_BookingType.Designer.cs">
+      <DependentUpon>Library_BookingType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_CargoType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_CargoType.Designer.cs">
+      <DependentUpon>Library_CargoType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Charterer.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Charterer.Designer.cs">
+      <DependentUpon>Library_Charterer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Client.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Client.Designer.cs">
+      <DependentUpon>Library_Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_ContainerSize.cs" />
+    <Compile Include="ORMDataModel2Code\Library_ContainerSize.Designer.cs">
+      <DependentUpon>Library_ContainerSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_ContainerStatus.cs" />
+    <Compile Include="ORMDataModel2Code\Library_ContainerStatus.Designer.cs">
+      <DependentUpon>Library_ContainerStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_DestinationType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_DestinationType.Designer.cs">
+      <DependentUpon>Library_DestinationType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Direction.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Direction.Designer.cs">
+      <DependentUpon>Library_Direction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_DocumentCategory.cs" />
+    <Compile Include="ORMDataModel2Code\Library_DocumentCategory.Designer.cs">
+      <DependentUpon>Library_DocumentCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Gate.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Gate.Designer.cs">
+      <DependentUpon>Library_Gate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Grade.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Grade.Designer.cs">
+      <DependentUpon>Library_Grade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_HandlingPoint.cs" />
+    <Compile Include="ORMDataModel2Code\Library_HandlingPoint.Designer.cs">
+      <DependentUpon>Library_HandlingPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_IncidentCause.cs" />
+    <Compile Include="ORMDataModel2Code\Library_IncidentCause.Designer.cs">
+      <DependentUpon>Library_IncidentCause.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_IncidentType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_IncidentType.Designer.cs">
+      <DependentUpon>Library_IncidentType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_InspectionCompany.cs" />
+    <Compile Include="ORMDataModel2Code\Library_InspectionCompany.Designer.cs">
+      <DependentUpon>Library_InspectionCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Length.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Length.Designer.cs">
+      <DependentUpon>Library_Length.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Material.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Material.Designer.cs">
+      <DependentUpon>Library_Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_OrderType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_OrderType.Designer.cs">
+      <DependentUpon>Library_OrderType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_OriginType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_OriginType.Designer.cs">
+      <DependentUpon>Library_OriginType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Packaging.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Packaging.Designer.cs">
+      <DependentUpon>Library_Packaging.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Product.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Product.Designer.cs">
+      <DependentUpon>Library_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_ProductType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_ProductType.Designer.cs">
+      <DependentUpon>Library_ProductType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_RCMClient.cs" />
+    <Compile Include="ORMDataModel2Code\Library_RCMClient.Designer.cs">
+      <DependentUpon>Library_RCMClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Sampler.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Sampler.Designer.cs">
+      <DependentUpon>Library_Sampler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_SealCondition.cs" />
+    <Compile Include="ORMDataModel2Code\Library_SealCondition.Designer.cs">
+      <DependentUpon>Library_SealCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_ShippingAgent.cs" />
+    <Compile Include="ORMDataModel2Code\Library_ShippingAgent.Designer.cs">
+      <DependentUpon>Library_ShippingAgent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Siding.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Siding.Designer.cs">
+      <DependentUpon>Library_Siding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Site.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Site.Designer.cs">
+      <DependentUpon>Library_Site.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Status.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Status.Designer.cs">
+      <DependentUpon>Library_Status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Supplier.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Supplier.Designer.cs">
+      <DependentUpon>Library_Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_TarpCondition.cs" />
+    <Compile Include="ORMDataModel2Code\Library_TarpCondition.Designer.cs">
+      <DependentUpon>Library_TarpCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Terminal.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Terminal.Designer.cs">
+      <DependentUpon>Library_Terminal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Transporter.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Transporter.Designer.cs">
+      <DependentUpon>Library_Transporter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_TransporterType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_TransporterType.Designer.cs">
+      <DependentUpon>Library_TransporterType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_TransportType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_TransportType.Designer.cs">
+      <DependentUpon>Library_TransportType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_TrimAction.cs" />
+    <Compile Include="ORMDataModel2Code\Library_TrimAction.Designer.cs">
+      <DependentUpon>Library_TrimAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_TruckType.cs" />
+    <Compile Include="ORMDataModel2Code\Library_TruckType.Designer.cs">
+      <DependentUpon>Library_TruckType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Type.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Type.Designer.cs">
+      <DependentUpon>Library_Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_UnitOfMeasure.cs" />
+    <Compile Include="ORMDataModel2Code\Library_UnitOfMeasure.Designer.cs">
+      <DependentUpon>Library_UnitOfMeasure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Vessel.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Vessel.Designer.cs">
+      <DependentUpon>Library_Vessel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Weather.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Weather.Designer.cs">
+      <DependentUpon>Library_Weather.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_Weighbridge.cs" />
+    <Compile Include="ORMDataModel2Code\Library_Weighbridge.Designer.cs">
+      <DependentUpon>Library_Weighbridge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Library_WeighMethod.cs" />
+    <Compile Include="ORMDataModel2Code\Library_WeighMethod.Designer.cs">
+      <DependentUpon>Library_WeighMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ModelDifference.cs" />
+    <Compile Include="ORMDataModel2Code\ModelDifference.Designer.cs">
+      <DependentUpon>ModelDifference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ModelDifferenceAspect.cs" />
+    <Compile Include="ORMDataModel2Code\ModelDifferenceAspect.Designer.cs">
+      <DependentUpon>ModelDifferenceAspect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Order_BookingReference.cs" />
+    <Compile Include="ORMDataModel2Code\Order_BookingReference.Designer.cs">
+      <DependentUpon>Order_BookingReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Order_OrderIn.cs" />
+    <Compile Include="ORMDataModel2Code\Order_OrderIn.Designer.cs">
+      <DependentUpon>Order_OrderIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Order_OrderOut.cs" />
+    <Compile Include="ORMDataModel2Code\Order_OrderOut.Designer.cs">
+      <DependentUpon>Order_OrderOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Order_VesselHatch.cs" />
+    <Compile Include="ORMDataModel2Code\Order_VesselHatch.Designer.cs">
+      <DependentUpon>Order_VesselHatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Order_VesselIntake.cs" />
+    <Compile Include="ORMDataModel2Code\Order_VesselIntake.Designer.cs">
+      <DependentUpon>Order_VesselIntake.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\PermissionPolicyMemberPermissionsObject.cs" />
+    <Compile Include="ORMDataModel2Code\PermissionPolicyMemberPermissionsObject.Designer.cs">
+      <DependentUpon>PermissionPolicyMemberPermissionsObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\PermissionPolicyNavigationPermissionsObject.cs" />
+    <Compile Include="ORMDataModel2Code\PermissionPolicyNavigationPermissionsObject.Designer.cs">
+      <DependentUpon>PermissionPolicyNavigationPermissionsObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\PermissionPolicyObjectPermissionsObject.cs" />
+    <Compile Include="ORMDataModel2Code\PermissionPolicyObjectPermissionsObject.Designer.cs">
+      <DependentUpon>PermissionPolicyObjectPermissionsObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\PermissionPolicyRole.cs" />
+    <Compile Include="ORMDataModel2Code\PermissionPolicyRole.Designer.cs">
+      <DependentUpon>PermissionPolicyRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\PermissionPolicyTypePermissionsObject.cs" />
+    <Compile Include="ORMDataModel2Code\PermissionPolicyTypePermissionsObject.Designer.cs">
+      <DependentUpon>PermissionPolicyTypePermissionsObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\PermissionPolicyUser.cs" />
+    <Compile Include="ORMDataModel2Code\PermissionPolicyUser.Designer.cs">
+      <DependentUpon>PermissionPolicyUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\PermissionPolicyUserUsers_PermissionPolicyRoleRoles.cs" />
+    <Compile Include="ORMDataModel2Code\PermissionPolicyUserUsers_PermissionPolicyRoleRoles.Designer.cs">
+      <DependentUpon>PermissionPolicyUserUsers_PermissionPolicyRoleRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ProductItemPickList.cs" />
+    <Compile Include="ORMDataModel2Code\ProductItemPickList.Designer.cs">
+      <DependentUpon>ProductItemPickList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Product_Dispatch_Rail.cs" />
+    <Compile Include="ORMDataModel2Code\Product_Dispatch_Rail.Designer.cs">
+      <DependentUpon>Product_Dispatch_Rail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Product_ProductDispatch.cs" />
+    <Compile Include="ORMDataModel2Code\Product_ProductDispatch.Designer.cs">
+      <DependentUpon>Product_ProductDispatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Product_ProductItem.cs" />
+    <Compile Include="ORMDataModel2Code\Product_ProductItem.Designer.cs">
+      <DependentUpon>Product_ProductItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Product_ProductReceive.cs" />
+    <Compile Include="ORMDataModel2Code\Product_ProductReceive.Designer.cs">
+      <DependentUpon>Product_ProductReceive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Product_ReceiveCount.cs" />
+    <Compile Include="ORMDataModel2Code\Product_ReceiveCount.Designer.cs">
+      <DependentUpon>Product_ReceiveCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Product_Receive_Rail.cs" />
+    <Compile Include="ORMDataModel2Code\Product_Receive_Rail.Designer.cs">
+      <DependentUpon>Product_Receive_Rail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ReportDataV2.cs" />
+    <Compile Include="ORMDataModel2Code\ReportDataV2.Designer.cs">
+      <DependentUpon>ReportDataV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Resource.cs" />
+    <Compile Include="ORMDataModel2Code\Resource.Designer.cs">
+      <DependentUpon>Resource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ResourceResources_EventEvents.cs" />
+    <Compile Include="ORMDataModel2Code\ResourceResources_EventEvents.Designer.cs">
+      <DependentUpon>ResourceResources_EventEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ServiceCollectionExtensions.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\ShuttleTrucks.cs" />
+    <Compile Include="ORMDataModel2Code\ShuttleTrucks.Designer.cs">
+      <DependentUpon>ShuttleTrucks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\StockHandling.cs" />
+    <Compile Include="ORMDataModel2Code\StockHandling.Designer.cs">
+      <DependentUpon>StockHandling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\Template_Document.cs" />
+    <Compile Include="ORMDataModel2Code\Template_Document.Designer.cs">
+      <DependentUpon>Template_Document.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\TruckStopEntry.cs" />
+    <Compile Include="ORMDataModel2Code\TruckStopEntry.Designer.cs">
+      <DependentUpon>TruckStopEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\TruckStopExit.cs" />
+    <Compile Include="ORMDataModel2Code\TruckStopExit.Designer.cs">
+      <DependentUpon>TruckStopExit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\WagonConsignment.cs" />
+    <Compile Include="ORMDataModel2Code\WagonConsignment.Designer.cs">
+      <DependentUpon>WagonConsignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoInstanceKey.cs" />
+    <Compile Include="ORMDataModel2Code\XpoInstanceKey.Designer.cs">
+      <DependentUpon>XpoInstanceKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoRunningWorkflowInstanceInfo.cs" />
+    <Compile Include="ORMDataModel2Code\XpoRunningWorkflowInstanceInfo.Designer.cs">
+      <DependentUpon>XpoRunningWorkflowInstanceInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoStartWorkflowRequest.cs" />
+    <Compile Include="ORMDataModel2Code\XpoStartWorkflowRequest.Designer.cs">
+      <DependentUpon>XpoStartWorkflowRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoState.cs" />
+    <Compile Include="ORMDataModel2Code\XpoState.Designer.cs">
+      <DependentUpon>XpoState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoStateAppearance.cs" />
+    <Compile Include="ORMDataModel2Code\XpoStateAppearance.Designer.cs">
+      <DependentUpon>XpoStateAppearance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoStateMachine.cs" />
+    <Compile Include="ORMDataModel2Code\XpoStateMachine.Designer.cs">
+      <DependentUpon>XpoStateMachine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoTrackingRecord.cs" />
+    <Compile Include="ORMDataModel2Code\XpoTrackingRecord.Designer.cs">
+      <DependentUpon>XpoTrackingRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoTransition.cs" />
+    <Compile Include="ORMDataModel2Code\XpoTransition.Designer.cs">
+      <DependentUpon>XpoTransition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoUserActivityVersion.cs" />
+    <Compile Include="ORMDataModel2Code\XpoUserActivityVersion.Designer.cs">
+      <DependentUpon>XpoUserActivityVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoWorkflowDefinition.cs" />
+    <Compile Include="ORMDataModel2Code\XpoWorkflowDefinition.Designer.cs">
+      <DependentUpon>XpoWorkflowDefinition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoWorkflowInstance.cs" />
+    <Compile Include="ORMDataModel2Code\XpoWorkflowInstance.Designer.cs">
+      <DependentUpon>XpoWorkflowInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ORMDataModel2Code\XpoWorkflowInstanceControlCommandRequest.cs" />
+    <Compile Include="ORMDataModel2Code\XpoWorkflowInstanceControlCommandRequest.Designer.cs">
+      <DependentUpon>XpoWorkflowInstanceControlCommandRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
     <Compile Include="Services\NavigationService.cs" />
@@ -230,6 +718,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
+    <None Include="ORMDataModel2.xpo" />
+    <None Include="ORMDataModel2.xpo.diagram">
+      <DependentUpon>ORMDataModel2.xpo</DependentUpon>
+    </None>
     <None Include="Uwp_App5_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -243,6 +735,11 @@
       <Project>{1FC84C4E-9339-4996-AAAA-D907F05A0424}</Project>
       <Name>Uwp_App5.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="DevExpress.Uwp, Version=19.2">
+      <Name>DevExpress.Uwp</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -4,15 +4,114 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom1="using:DevExpress.UI.Xaml.Editors"
+    
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--
-                The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.
-            -->
+
+
+            <StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock HorizontalAlignment="Left" ><Run Text="Truck Registration"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" MinWidth="200"  x:Name="newTruckReg" />
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock HorizontalAlignment="Left"><Run Text="WB Ticket"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" MinWidth="200" x:Name="newWbTicket" />
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock HorizontalAlignment="Left" ><Run Text="Container No"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" MinWidth="200"  x:Name="newContainer" />
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock HorizontalAlignment="Left"><Run Text="Driver Name"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" MinWidth="200" x:Name="newDriver"  />
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock HorizontalAlignment="Left"><Run Text="Driver Name"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" MinWidth="200" x:Name="Newnew"  />
+                </StackPanel>
+
+                <StackPanel Margin="5">
+
+
+                    <ComboBox x:Name="colorComboBox" Width="200"
+                        Header="Orders" PlaceholderText="---Select Order---"
+                        >
+                        <ComboBoxItem></ComboBoxItem>
+                    </ComboBox>
+
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock HorizontalAlignment="Left" Name="RecRemaining" ><Run />RecRemaining:</TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Name="RecTotal"><Run />RecTotal:</TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Name="DisTotal"><Run />DisTotal:</TextBlock>
+                </StackPanel>
+
+                <StackPanel Margin="5">
+
+
+                    <ComboBox x:Name="TransComboBox" Width="200"
+                        Header="Transporter" PlaceholderText="---Select Transpoter---"
+                       >
+                        <ComboBoxItem></ComboBoxItem>
+                    </ComboBox>
+
+                </StackPanel>
+                <StackPanel Margin="5">
+
+
+                    <ComboBox x:Name="SupplierComboBox" Width="200"
+                        Header="Suppliers" PlaceholderText="---Select Supplier---"
+                        >
+                        <ComboBoxItem></ComboBoxItem>
+                    </ComboBox>
+
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Left"><Run Text="Arrival Date"/></TextBlock>
+
+                    <!--<Custom1:DateEdit Name="datePacked" HorizontalAlignment="Left"  MinWidth="200"/>-->
+
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Save"  x:Name="commitButton" Click="commitButton_Click"  />
+                </StackPanel>
+                <!--<StackPanel>
+                    <controls1:DataGrid x:Name="dataGrid1" 
+                        Height="360" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                        AutoGenerateColumns="False">
+                        <controls1:DataGrid.Columns>
+                            <controls1:DataGridTextColumn Header="TruckRegistration"
+                                             Binding="{Binding TruckRegistration}"/>
+                            <controls1:DataGridTextColumn Header="ArrivalDate"
+                                             Binding="{Binding ArrivalDate}"/>
+                            <controls1:DataGridTextColumn Header="WBTicket"
+                                             Binding="{Binding WBTicket}"/>
+                            <controls1:DataGridTextColumn Header="Product"
+                                             Binding="{Binding RecOrderID.ProductID.Name}"/>
+
+
+                        </controls1:DataGrid.Columns>
+                    </controls1:DataGrid>
+
+
+                </StackPanel>-->
+
+
+
+            </StackPanel>
+
+
+
+
         </Grid>
     </Grid>
 </Page>
