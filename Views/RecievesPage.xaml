@@ -37,12 +37,12 @@
                             <TextBlock HorizontalAlignment="Left"><Run Text="Driver Name"/></TextBlock>
                             <TextBox HorizontalAlignment="Left" MinWidth="200" x:Name="newDriver"  />
                         </StackPanel>
-                        <StackPanel Margin="5">
+                        <!--<StackPanel Margin="5">
                             <TextBlock HorizontalAlignment="Left"><Run Text="Driver Name"/></TextBlock>
                             <TextBox HorizontalAlignment="Left" MinWidth="200" x:Name="Newnew"  />
-                        </StackPanel>
+                        </StackPanel>-->
                         <StackPanel  Margin="5">
-                            <ComboBox x:Name="ImgCombobox" >
+                            <ComboBox x:Name="ImgCombobox">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -106,6 +106,9 @@
                             <Button Content="Save"  x:Name="commitButton" Click="commitButton_Click"  />
                         </StackPanel>
                         <StackPanel>
+                            <StackPanel>
+                                <TextBlock><Hyperlink NavigateUri="http://www.bing.com">Go to Bing</Hyperlink></TextBlock>
+                            </StackPanel>
 
 
                         </StackPanel>
@@ -123,27 +126,40 @@
                         <StackPanel>
 
                             <controls1:DataGrid x:Name="dataGrid1" 
-                        Height="360" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                        Height="800" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
                         AutoGenerateColumns="False">
                         <controls1:DataGrid.Columns>
-                            <controls1:DataGridTextColumn Header="TruckRegistration"
-                                             Binding="{Binding TruckRegistration}"/>
+                                    <controls1:DataGridTemplateColumn Header="TruckRegistration">
+                                        <controls1:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton x:Name="Hyperlink" Content="{Binding ID}" ContentTemplate="{Binding TruckRegistration}" Click="Click_Edit"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </controls1:DataGridTemplateColumn.CellTemplate>
+                                    </controls1:DataGridTemplateColumn>
+                                    
                             <controls1:DataGridTextColumn Header="ArrivalDate"
                                              Binding="{Binding ArrivalDate}"/>
-                            <controls1:DataGridTextColumn Header="WBTicket"
+                                    <controls1:DataGridTextColumn Header="TruckRegistation"
+                                             Binding="{Binding TruckRegistration}"/>
+                                    <controls1:DataGridTextColumn Header="WBTicket"
                                              Binding="{Binding WBTicket}"/>
                             <controls1:DataGridTextColumn Header="Product"
                                              Binding="{Binding RecOrderID.ProductID.Name}"/>
+                            <controls1:DataGridTextColumn Header="Link"
+                                             Binding="{Binding RecOrderID.ProductID.Name}"/>
+                                   
 
 
-                        </controls1:DataGrid.Columns>
+                                </controls1:DataGrid.Columns>
                     </controls1:DataGrid>
 
                         </StackPanel>
+                       
 
                     </Canvas>
 
                 </controls11:TabViewItem>
+               
             </controls11:TabView>
 
           

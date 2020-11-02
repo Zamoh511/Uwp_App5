@@ -232,7 +232,42 @@ namespace Uwp_App5.Views
             {
             }
         }
-        ///
+        //Click_Edit
+        private void Click_Edit(object sender,RoutedEventArgs e)
+        {
+
+            try
+            {
+                var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+                using (var uow = new UnitOfWork(inMemoryDAL))
+                {
+
+                    XPQuery<Product_ProductReceive> items = new XPQuery<Product_ProductReceive>(uow);
+                    Product_ProductReceive searchItem = items.FirstOrDefault(i => i.ID == Convert.ToInt32(((Windows.UI.Xaml.Controls.ContentControl)sender).Content.ToString()));
+                    if (!String.IsNullOrEmpty(searchItem.ContainerNo))
+                    {
+                        newContainer.Text = (searchItem.ContainerNo).ToString();
+                    }
+                    if (!String.IsNullOrEmpty(searchItem.DriverName))
+                    {
+                        newDriver.Text = (searchItem.DriverName).ToString();
+                    }
+                    if (!String.IsNullOrEmpty(searchItem.DriverName))
+                    {
+                        newTruckReg.Text = (searchItem.TruckRegistration).ToString();                     
+                    }
+                    newWbTicket.Text = (searchItem.WBTicket).ToString();
+
+                }
+                //newWbTicket.Text = ((Windows.UI.Xaml.Controls.ContentControl)sender).Content.ToString();
+            }
+            catch(Exception ex)
+            {
+                var msg = ex.Message;
+            }
+           
+
+        }
 
         private void TransComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
