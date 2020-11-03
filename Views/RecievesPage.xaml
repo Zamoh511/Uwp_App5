@@ -15,8 +15,8 @@
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <controls11:TabView>
-                <controls11:TabViewItem Header="Detail View">
+            <controls11:TabView Name="tabView">
+                <controls11:TabViewItem Header="Detail View" Name="tab1">
                     <StackPanel>
 
                         <StackPanel Margin="5">
@@ -42,11 +42,11 @@
                             <TextBox HorizontalAlignment="Left" MinWidth="200" x:Name="Newnew"  />
                         </StackPanel>-->
                         <StackPanel  Margin="5">
-                            <ComboBox x:Name="ImgCombobox">
+                            <ComboBox x:Name="ImgCombobox" Header="Site" MinWidth="200">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="{Binding BitmapImage}" Width="70" Height="60"/>
+                                            <Image Source="{Binding Logo}"  Width="70" Height="60" />
                                             <TextBlock Text="{Binding Name}"/>
                                         </StackPanel>
                                     </DataTemplate>
@@ -105,15 +105,7 @@
                         <StackPanel>
                             <Button Content="Save"  x:Name="commitButton" Click="commitButton_Click"  />
                         </StackPanel>
-                        <StackPanel>
-                            <StackPanel>
-                                <TextBlock><Hyperlink NavigateUri="http://www.bing.com">Go to Bing</Hyperlink></TextBlock>
-                            </StackPanel>
-
-
-                        </StackPanel>
-
-                     
+                    
 
                     </StackPanel>
 
@@ -121,7 +113,7 @@
 
                 </controls11:TabViewItem>
 
-                <controls11:TabViewItem Header="Grid View">
+                <controls11:TabViewItem Header="Grid View" Name="tab2">
                     <Canvas>
                         <StackPanel>
 
@@ -136,17 +128,17 @@
                                             </DataTemplate>
                                         </controls1:DataGridTemplateColumn.CellTemplate>
                                     </controls1:DataGridTemplateColumn>
-                                    
-                            <controls1:DataGridTextColumn Header="ArrivalDate"
-                                             Binding="{Binding ArrivalDate}"/>
                                     <controls1:DataGridTextColumn Header="TruckRegistation"
                                              Binding="{Binding TruckRegistration}"/>
+                                    <controls1:DataGridTextColumn Header="ArrivalDate"
+                                             Binding="{Binding ArrivalDate}"/>
+                                   
                                     <controls1:DataGridTextColumn Header="WBTicket"
                                              Binding="{Binding WBTicket}"/>
                             <controls1:DataGridTextColumn Header="Product"
                                              Binding="{Binding RecOrderID.ProductID.Name}"/>
-                            <controls1:DataGridTextColumn Header="Link"
-                                             Binding="{Binding RecOrderID.ProductID.Name}"/>
+                            <controls1:DataGridTextColumn Header="OrderNo"
+                                             Binding="{Binding RecOrderID.OrderNo}"/>
                                    
 
 
