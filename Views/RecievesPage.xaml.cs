@@ -379,7 +379,10 @@ namespace Uwp_App5.Views
 
                     for (int i = 0; i <= table.Rows.Count; i++)
                     {
-                        SqlComboBox.Items.Add(table.Rows[i]["Name"]);
+                        ComboBoxItem boxItem = new ComboBoxItem();
+                        boxItem.Tag = table.Rows[i]["ID"];
+                        boxItem.Content = table.Rows[i]["Name"];
+                        SqlComboBox.Items.Add(boxItem);
                        
                     }
                   
