@@ -4,11 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:controls1="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:controls1="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:Custom="using:DevExpress.UI.Xaml.Custom"
     xmlns:Custom1="using:DevExpress.UI.Xaml.Editors"
     xmlns:model="using:Uwp_App5.RapidCM_PGS_Dev"
     xmlns:controls11="using:Microsoft.UI.Xaml.Controls"
+    xmlns:Gauges="using:DevExpress.UI.Xaml.Gauges"
     
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
@@ -167,12 +168,30 @@
                             </StackPanel>
 
                             <StackPanel>
-                                <my1:CircularGauge>
-                                    <my1:ArcScale EndAngle="270" EndValue="12">
-                                        
-                                        
-                                    </my1:ArcScale>
-                                </my1:CircularGauge>
+                                <Gauges:CircularGauge>
+                                    <Gauges:ArcScale StartValue="0" EndValue="12"
+                             StartAngle="-90" EndAngle="270"
+                             MajorIntervalCount="12" MinorIntervalCount="5">
+                                        <Gauges:ArcScale.Ranges>
+                                            <Gauges:ArcScaleRange StartValue="0" EndValue="4"/>
+                                            <Gauges:ArcScaleRange EndValue="8" StartValue="4"/>
+                                            <Gauges:ArcScaleRange EndValue="12" StartValue="8"/>
+                                        </Gauges:ArcScale.Ranges>
+                                        <Gauges:ArcScale.RangeBars>
+                                            <Gauges:ArcScaleRangeBar AnchorValue="7" Value="3"/>
+                                        </Gauges:ArcScale.RangeBars>
+                                        <Gauges:ArcScale.Markers>
+                                            <Gauges:ArcScaleMarker Value="7"/>
+                                        </Gauges:ArcScale.Markers>
+                                        <Gauges:ArcScale.Needles>
+                                            <Gauges:ArcScaleNeedle Value="3"/>
+                                            <Gauges:ArcScaleNeedle Value="12"/>
+                                        </Gauges:ArcScale.Needles>
+                                        <Gauges:ArcScale.LabelOptions>
+                                            <Gauges:ArcScaleLabelOptions ShowFirst="False"/>
+                                        </Gauges:ArcScale.LabelOptions>
+                                    </Gauges:ArcScale>
+                                </Gauges:CircularGauge>
                             </StackPanel>
 
                         </StackPanel>

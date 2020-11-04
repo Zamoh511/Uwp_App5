@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls11="using:Microsoft.UI.Xaml.Controls"
+    xmlns:Gauges="using:DevExpress.UI.Xaml.Gauges"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
@@ -13,24 +14,53 @@
 
 
             <controls11:TabView>
-                <controls11:TabViewItem Header="Tab 2">
-                   
-                  
+                <controls11:TabViewItem Header="Tab 1">
+
+                    <StackPanel>
+                        <Gauges:CircularGauge Name="Gauge1">
+                            <Gauges:ArcScale StartValue="0" EndValue="12"
+                             StartAngle="-90" EndAngle="270"
+                             MajorIntervalCount="12" MinorIntervalCount="5">
+                                <Gauges:ArcScale.Ranges>
+                                    <Gauges:ArcScaleRange StartValue="0" EndValue="4"/>
+                                    <Gauges:ArcScaleRange EndValue="8" StartValue="4"/>
+                                    <Gauges:ArcScaleRange EndValue="12" StartValue="8"/>
+                                </Gauges:ArcScale.Ranges>
+                                <Gauges:ArcScale.RangeBars>
+                                    <Gauges:ArcScaleRangeBar AnchorValue="7" Value="3"/>
+                                </Gauges:ArcScale.RangeBars>
+                                <Gauges:ArcScale.Markers>
+                                    <Gauges:ArcScaleMarker Value="7"/>
+                                </Gauges:ArcScale.Markers>
+                                <Gauges:ArcScale.Needles>
+                                    <Gauges:ArcScaleNeedle Value="3"/>
+                                    <Gauges:ArcScaleNeedle Value="12"/>
+                                </Gauges:ArcScale.Needles>
+                                <Gauges:ArcScale.LabelOptions>
+                                    <Gauges:ArcScaleLabelOptions ShowFirst="False"/>
+                                </Gauges:ArcScale.LabelOptions>
+                            </Gauges:ArcScale>
+                        </Gauges:CircularGauge>
+                    </StackPanel>
 
                 </controls11:TabViewItem>
                 
-                <controls11:TabViewItem Header="Tab 1">
+                <controls11:TabViewItem Header="Tab 2">
                     <Canvas>
                         <StackPanel>
-                            <StackPanel>
-                                <TextBlock HorizontalAlignment="Left" ><Run Text="Truck Registration1"/></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock HorizontalAlignment="Left" ><Run Text="Truck Registration2"/></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock HorizontalAlignment="Left" ><Run Text="Truck Registration3"/></TextBlock>
-                            </StackPanel>
+                            <Gauges:LinearGauge Margin="20">
+                                <Gauges:LinearGauge.Scales>
+                                    <Gauges:LinearScale StartValue="-100" EndValue="100" MajorIntervalCount="20" >
+                                        <Gauges:LinearScale.Ranges>
+                                            <Gauges:LinearScaleRange StartValue="-100" EndValue="0"/>
+                                            <Gauges:LinearScaleRange StartValue="0" EndValue="100"/>
+                                        </Gauges:LinearScale.Ranges>
+                                        <Gauges:LinearScale.LevelBars>
+                                            <Gauges:LinearScaleLevelBar Value="20" />
+                                        </Gauges:LinearScale.LevelBars>
+                                    </Gauges:LinearScale>
+                                </Gauges:LinearGauge.Scales>
+                            </Gauges:LinearGauge>
                         </StackPanel>
                         
                         
