@@ -17,6 +17,8 @@ using Windows.Storage.Streams;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using Windows.UI.Xaml.Data;
+using Microsoft.Toolkit.Uwp.UI.Controls;
 
 namespace Uwp_App5.Views
 {
@@ -336,10 +338,28 @@ namespace Uwp_App5.Views
                     DataTable table = new DataTable();
                     adapter.Fill(table);
 
+
+                    dataGrid2.Columns.Clear();
+                    dataGrid2.AutoGenerateColumns = false;
+                    
+
+                    for (int i = 0; i < table.Columns.Count; i++)
+                    {
+                        dataGrid2.Columns.Add(new DataGridTextColumn()
+                        {
+                            Header = table.Columns[i].ColumnName,
+                            Binding = new Binding { Path = new PropertyPath("[" + i.ToString() + "]") }
+                        });
+                    }
+
+
                     var collection = new ObservableCollection<object>();
                     foreach (DataRow row in table.Rows)
                     {
-                        collection.Add(row.ItemArray[1]);
+                        //foreach(DataTable data in row)
+                        collection.Add(row.ItemArray);
+                        //collection.Insert(0, row.ItemArray[1]);
+                        //collection.Add(row.ItemArray[2]);
                         //dataGrid2.ItemsSource = collection;
                     }
                     //for (int i =0;i<=((table.Rows.Count)-1);i++)
@@ -347,8 +367,6 @@ namespace Uwp_App5.Views
                     //    collection.Add(table.Rows[i]);
                     //}
                     dataGrid2.ItemsSource = collection;
-
-
 
                 }
             }
