@@ -154,12 +154,27 @@
                 <controls11:TabViewItem Name="Tab3" Header="SQL Queries">
                     <Canvas>
                         <StackPanel>
-                            <controls1:DataGrid x:Name="dataGrid2" 
+                            <StackPanel Margin="5">
+
+
+                                <ComboBox x:Name="SqlComboBox" Width="200"
+                        Header="TestComboBox" PlaceholderText="---Select Item---">
+
+                                    <ComboBoxItem></ComboBoxItem>
+                                </ComboBox>
+
+                            </StackPanel>
+                            <StackPanel>
+                                <controls1:DataGrid x:Name="dataGrid2" 
                         Height="800" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
                         AutoGenerateColumns="True">
-                                                              
-                            </controls1:DataGrid>
+
+                                </controls1:DataGrid>
+                            </StackPanel>
+
                         </StackPanel>
+                        
+                       
                     </Canvas>
                 </controls11:TabViewItem>
 

@@ -29,11 +29,12 @@ namespace Uwp_App5.Views
             
             InitializeComponent();
             insertSql();
+            populateSQLcombo();
             //PopulateCombobox();
             //PopulateSupplierCombobox();
             //PopulateTransCombobox();
-            PopulateGridControl();
-            //PopulateImgCombobox();         
+            //PopulateGridControl();
+            //PopulateImgCombobox();
 
 
 
@@ -69,11 +70,7 @@ namespace Uwp_App5.Views
                     pr.TruckRegistration = newTruckReg.Text;
                     pr.ContainerNo = newContainer.Text;
                     //pr.ArrivalDate = datePacked.DateTime;
-                    pr.WBTicket = Convert.ToInt32(newWbTicket.Text);
-                    if (pr.ID != 0 || pr.ID != null)
-                    {
-                        int i = 0;
-                    }
+                    pr.WBTicket = Convert.ToInt32(newWbTicket.Text); 
                     uow.CommitChanges();
                     DisplayDialog();
                     PopulateGridControl();
@@ -180,9 +177,7 @@ namespace Uwp_App5.Views
                 using (var uow = new UnitOfWork(inMemoryDAL))
                 {
                     XPCollection<Library_Site> sites = new XPCollection<Library_Site>(uow);
-                    var list = sites.Select(i => new { Logo = ImageFromBytes(i.Logo), i.Name }).ToList();
-                    //colorComboBox.Items.Clear();
-
+                    var list = sites.Select(i => new { Logo = ImageFromBytes(i.Logo), i.Name }).ToList();                  
                     foreach (var item in list.Distinct())
                     {
                         ImgCombobox.Items.Add(item);
@@ -236,7 +231,6 @@ namespace Uwp_App5.Views
                 {
                     XPCollection<Library_Transporter> Library_Transporters = new XPCollection<Library_Transporter>(uow);
                     var list = Library_Transporters.Select(x => x.Name).ToList();
-                    //colorComboBox.Items.Clear();
                     foreach (string item in list.Distinct())
                     {
                         TransComboBox.Items.Add(item);
@@ -319,8 +313,8 @@ namespace Uwp_App5.Views
                 XPQuery<Order_OrderIn> items = new XPQuery<Order_OrderIn>(uow);
                 Order_OrderIn searchItem = items.FirstOrDefault(i => i.OrderNo == (colorComboBox.SelectedValue.ToString()));
                 RecRemaining.Text = (searchItem.Quantity).ToString();
-                DisTotal.Text = (searchItem.Quantity + 200).ToString();
-                RecTotal.Text = (searchItem.Quantity - 300).ToString();
+                DisTotal.Text = (searchItem.Quantity).ToString();
+                RecTotal.Text = (searchItem.Quantity).ToString();
             }
         }
         public void insertSql()
@@ -338,10 +332,8 @@ namespace Uwp_App5.Views
                     DataTable table = new DataTable();
                     adapter.Fill(table);
 
-
                     dataGrid2.Columns.Clear();
-                    dataGrid2.AutoGenerateColumns = false;
-                    
+                    dataGrid2.AutoGenerateColumns = false;                   
 
                     for (int i = 0; i < table.Columns.Count; i++)
                     {
@@ -351,23 +343,12 @@ namespace Uwp_App5.Views
                             Binding = new Binding { Path = new PropertyPath("[" + i.ToString() + "]") }
                         });
                     }
-
-
                     var collection = new ObservableCollection<object>();
                     foreach (DataRow row in table.Rows)
-                    {
-                        //foreach(DataTable data in row)
-                        collection.Add(row.ItemArray);
-                        //collection.Insert(0, row.ItemArray[1]);
-                        //collection.Add(row.ItemArray[2]);
-                        //dataGrid2.ItemsSource = collection;
-                    }
-                    //for (int i =0;i<=((table.Rows.Count)-1);i++)
-                    //{
-                    //    collection.Add(table.Rows[i]);
-                    //}
+                    {                      
+                        collection.Add(row.ItemArray);                      
+                    }                   
                     dataGrid2.ItemsSource = collection;
-
                 }
             }
             catch (Exception ex)
@@ -376,9 +357,37 @@ namespace Uwp_App5.Views
             }
 
         }
-        
 
+        //SqlComboBox
+        public void populateSQLcombo()
+        {
+            try
+            {
+                string queryString = "Select * from Library_Supplier";
+                using (SqlConnection connection = new SqlConnection(connectionString2))
+                {
+                    SqlCommand command = new SqlCommand(queryString, connection);
+                    command.CommandType = CommandType.Text;
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
 
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+
+                    for (int i = 0; i <= table.Rows.Count; i++)
+                    {
+                        SqlComboBox.Items.Add(table.Rows[i]["Name"]);
+                       
+                    }
+                  
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
 
     }
 }
