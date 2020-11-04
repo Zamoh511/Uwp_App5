@@ -1,4 +1,4 @@
-﻿<Page xmlns:my="using:DevExpress.UI.Xaml.Grid" 
+﻿<Page xmlns:my1="using:DevExpress.UI.Xaml.Gauges"  xmlns:my="using:DevExpress.UI.Xaml.Grid" 
     x:Class="Uwp_App5.Views.RecievesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -154,27 +154,29 @@
                 <controls11:TabViewItem Name="Tab3" Header="SQL Queries">
                     <Canvas>
                         <StackPanel>
+
                             <StackPanel Margin="5">
-
-
-                                <ComboBox x:Name="SqlComboBox" Width="200"
-                        Header="TestComboBox" PlaceholderText="---Select Item---">
-
+                                <ComboBox x:Name="SqlComboBox" Width="200" Header="TestComboBox" PlaceholderText="---Select Item---">
                                     <ComboBoxItem></ComboBoxItem>
                                 </ComboBox>
-
                             </StackPanel>
-                            <StackPanel>
-                                <controls1:DataGrid x:Name="dataGrid2" 
-                        Height="800" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                        AutoGenerateColumns="True">
 
+                            <StackPanel>
+                                <controls1:DataGrid x:Name="dataGrid2" Height="800" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"  AutoGenerateColumns="True">
                                 </controls1:DataGrid>
                             </StackPanel>
 
+                            <StackPanel>
+                                <my1:CircularGauge>
+                                    <my1:ArcScale EndAngle="270" EndValue="12">
+                                        
+                                        
+                                    </my1:ArcScale>
+                                </my1:CircularGauge>
+                            </StackPanel>
+
                         </StackPanel>
-                        
-                       
+                                               
                     </Canvas>
                 </controls11:TabViewItem>
 

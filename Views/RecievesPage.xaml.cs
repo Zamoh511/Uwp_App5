@@ -30,11 +30,11 @@ namespace Uwp_App5.Views
             InitializeComponent();
             insertSql();
             populateSQLcombo();
-            //PopulateCombobox();
-            //PopulateSupplierCombobox();
-            //PopulateTransCombobox();
-            //PopulateGridControl();
-            //PopulateImgCombobox();
+            PopulateCombobox();
+            PopulateSupplierCombobox();
+            PopulateTransCombobox();
+            PopulateGridControl();
+            PopulateImgCombobox();
 
 
 
@@ -230,10 +230,13 @@ namespace Uwp_App5.Views
                 using (var uow = new UnitOfWork(inMemoryDAL))
                 {
                     XPCollection<Library_Transporter> Library_Transporters = new XPCollection<Library_Transporter>(uow);
-                    var list = Library_Transporters.Select(x => x.Name).ToList();
-                    foreach (string item in list.Distinct())
+                    var list = Library_Transporters.Select(i => new { ID = (i.ID).ToString(),Name= i.Name }).ToList();
+                    foreach (var item in list.Distinct())
                     {
-                        TransComboBox.Items.Add(item);
+                        ComboBoxItem comboItem = new ComboBoxItem();
+                        comboItem.Content = item.Name;
+                        comboItem.Tag = item.ID;
+                        TransComboBox.Items.Add(comboItem);
                     }
                 }
             }
