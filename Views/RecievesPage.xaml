@@ -137,10 +137,8 @@
                                              Binding="{Binding WBTicket}"/>
                             <controls1:DataGridTextColumn Header="Product"
                                              Binding="{Binding RecOrderID.ProductID.Name}"/>
-                            <controls1:DataGridTextColumn Header="OrderNo"
+                                    <controls1:DataGridTextColumn Header="OrderNo"
                                              Binding="{Binding RecOrderID.OrderNo}"/>
-                                   
-
 
                                 </controls1:DataGrid.Columns>
                     </controls1:DataGrid>
@@ -151,7 +149,21 @@
                     </Canvas>
 
                 </controls11:TabViewItem>
-               
+
+
+                <controls11:TabViewItem Name="Tab3" Header="SQL Queries">
+                    <Canvas>
+                        <StackPanel>
+                            <controls1:DataGrid x:Name="dataGrid2" 
+                        Height="800" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                        AutoGenerateColumns="True">
+                                                              
+                            </controls1:DataGrid>
+                        </StackPanel>
+                    </Canvas>
+                </controls11:TabViewItem>
+
+                
             </controls11:TabView>
 
           

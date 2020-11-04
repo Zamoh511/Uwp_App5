@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Media.Imaging;
 using System.Threading.Tasks;
 using Windows.Storage.Streams;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace Uwp_App5.Views
 {
@@ -22,15 +24,20 @@ namespace Uwp_App5.Views
     {
         public RecievesPage()
         {
+            
             InitializeComponent();
-            PopulateCombobox();
-            PopulateSupplierCombobox();
-            PopulateTransCombobox();
+            insertSql();
+            //PopulateCombobox();
+            //PopulateSupplierCombobox();
+            //PopulateTransCombobox();
             PopulateGridControl();
-            PopulateImgCombobox();
-            UpdateRecord(1004);
+            //PopulateImgCombobox();         
+
+
+
         }
         const string connectionString = @"XpoProvider=MSSqlServer;data source=DESKTOP-32QVBUV\SQL2017;user id=201619;password=pPqtKc19;initial catalog=RapidCM_PGS_Dev;Persist Security Info=true";
+        const string connectionString2 = @"data source=DESKTOP-32QVBUV\SQL2017;user id=201619;password=pPqtKc19;initial catalog=RapidCM_PGS_Dev;Persist Security Info=true";
 
         ObservableCollection<Order_OrderIn> Order_OrderIns = new ObservableCollection<Order_OrderIn>();
 
@@ -47,7 +54,7 @@ namespace Uwp_App5.Views
 
                     XPQuery<Library_Supplier> L_items = new XPQuery<Library_Supplier>(uow);
                     Library_Supplier L_SearchItem = L_items.FirstOrDefault(i => i.Name == (SupplierComboBox.SelectedValue.ToString()));
-                    
+
                     XPQuery<Library_Transporter> Trans_items = new XPQuery<Library_Transporter>(uow);
                     Library_Transporter LT_SearchItem = Trans_items.FirstOrDefault(i => i.Name == (TransComboBox.SelectedValue.ToString()));
 
@@ -67,6 +74,7 @@ namespace Uwp_App5.Views
                     }
                     uow.CommitChanges();
                     DisplayDialog();
+                    PopulateGridControl();
                     newContainer.Text = "";
                     newWbTicket.Text = "";
                     newTruckReg.Text = "";
@@ -78,12 +86,12 @@ namespace Uwp_App5.Views
                 Name = ex.Message;
             }
         }
-       
+
         public void DeleteByKey(int ID)
         {
             using (var uow = new UnitOfWork())
             {
-                var record = uow.GetObjectByKey<Order_OrderIn>(ID);             
+                var record = uow.GetObjectByKey<Order_OrderIn>(ID);
                 uow.Delete(record);
                 uow.CommitChanges();
             }
@@ -92,11 +100,11 @@ namespace Uwp_App5.Views
         {
             using (var uow = new UnitOfWork())
             {
-                var record = uow.GetObjectByKey<Product_ProductReceive>(key);               
-                record.ContainerNo=newContainer.Text;
-                record.WBTicket=Convert.ToInt32(newWbTicket.Text);
-                record.TruckRegistration=newTruckReg.Text;
-                record.DriverName=newDriver.Text;
+                var record = uow.GetObjectByKey<Product_ProductReceive>(key);
+                record.ContainerNo = newContainer.Text;
+                record.WBTicket = Convert.ToInt32(newWbTicket.Text);
+                record.TruckRegistration = newTruckReg.Text;
+                record.DriverName = newDriver.Text;
                 uow.CommitChanges();
             }
         }
@@ -151,7 +159,6 @@ namespace Uwp_App5.Views
                 {
                     XPCollection<Order_OrderIn> order_OrderIns = new XPCollection<Order_OrderIn>(uow);
                     var list = order_OrderIns.Select(x => x.OrderNo).ToList();
-                    //colorComboBox.Items.Clear();
                     foreach (string item in list.Distinct())
                     {
                         colorComboBox.Items.Add(item);
@@ -196,7 +203,7 @@ namespace Uwp_App5.Views
             }
             return image;
         }
-      
+
         public void PopulateSupplierCombobox()
         {
             var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
@@ -206,7 +213,7 @@ namespace Uwp_App5.Views
                 {
                     XPCollection<Library_Supplier> Library_Suppliers = new XPCollection<Library_Supplier>(uow);
                     var list = Library_Suppliers.Select(x => x.Name).ToList();
-                    
+
                     foreach (string item in list.Distinct())
                     {
                         SupplierComboBox.Items.Add(item);
@@ -255,8 +262,8 @@ namespace Uwp_App5.Views
                 var msg = ex.Message;
             }
         }
-        //Click_Edit
-        private void Click_Edit(object sender,RoutedEventArgs e)
+
+        private void Click_Edit(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -275,19 +282,19 @@ namespace Uwp_App5.Views
                     }
                     if (!String.IsNullOrEmpty(searchItem.TruckRegistration))
                     {
-                        newTruckReg.Text = (searchItem.TruckRegistration).ToString();                     
+                        newTruckReg.Text = (searchItem.TruckRegistration).ToString();
                     }
                     newWbTicket.Text = (searchItem.WBTicket).ToString();
-                }               
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var msg = ex.Message;
-            }           
+            }
         }
 
         public void UpdateRecord(int id)
-        {           
+        {
             var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
             using (var uow = new UnitOfWork(inMemoryDAL))
             {
@@ -310,11 +317,50 @@ namespace Uwp_App5.Views
                 XPQuery<Order_OrderIn> items = new XPQuery<Order_OrderIn>(uow);
                 Order_OrderIn searchItem = items.FirstOrDefault(i => i.OrderNo == (colorComboBox.SelectedValue.ToString()));
                 RecRemaining.Text = (searchItem.Quantity).ToString();
-                DisTotal.Text = (searchItem.Quantity).ToString();
-                RecTotal.Text = (searchItem.Quantity).ToString();
+                DisTotal.Text = (searchItem.Quantity + 200).ToString();
+                RecTotal.Text = (searchItem.Quantity - 300).ToString();
             }
         }
+        public void insertSql()
+        {
+            try
+            {
+                string queryString = "Select * from Library_Supplier";
+                using (SqlConnection connection = new SqlConnection(connectionString2))
+                {
+                    SqlCommand command = new SqlCommand(queryString, connection); 
+                    command.CommandType = CommandType.Text;
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
 
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+
+                    var collection = new ObservableCollection<object>();
+                    foreach (DataRow row in table.Rows)
+                    {
+                        collection.Add(row.ItemArray[1]);
+                        //dataGrid2.ItemsSource = collection;
+                    }
+                    //for (int i =0;i<=((table.Rows.Count)-1);i++)
+                    //{
+                    //    collection.Add(table.Rows[i]);
+                    //}
+                    dataGrid2.ItemsSource = collection;
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+
+        }
         
+
+
+
     }
 }
