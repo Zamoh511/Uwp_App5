@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Windows.UI.Xaml.Controls;
 using System.Timers;
+using Windows.UI.Xaml;
 
 namespace Uwp_App5.Views
 {
@@ -20,15 +21,54 @@ namespace Uwp_App5.Views
         public DispatchPage()
         {
             InitializeComponent();
+            SetFakeData();
+            
+        }
+        private int _airTemp;
+        public int AirTemp
+        {
+            get
+            {
+                return _airTemp;
+            }
+            set
+            {
+                _airTemp = value;
+                OnPropertyChanged();
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-            SetTimer();
-           
-            //aTimer.Stop();
-            //aTimer.Dispose();
-         //   sAMPLE
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if (PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private void SetFakeData()
+        {
+            var timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(0.5);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, object e)
+        {
+            Random random = new Random();
+            AirTemp = random.Next(0, 12);
+            //do
+            //{
+            //    AirTemp += 1;
+
+            //} while (AirTemp > 100);
+
+        }
+
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         private void Set<T>(ref T storage, T value, [CallerMemberName]string propertyName = null)
         {
@@ -41,9 +81,7 @@ namespace Uwp_App5.Views
             OnPropertyChanged(propertyName);
         }
 
-        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        
+        //private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));        
 
         public void updateGauge()
         {
@@ -73,32 +111,7 @@ namespace Uwp_App5.Views
             arcScaleMarker.Value = 1;
 
         }
-        private static System.Timers.Timer aTimer;
-        private static void SetTimer()
-        {
-            // Create a timer with a two second interval.
-            aTimer = new System.Timers.Timer(5000);
-            // Hook up the Elapsed event for the timer. 
-            aTimer.Elapsed += OnTimedEvent;
-            aTimer.AutoReset = true;
-            aTimer.Enabled = true;
-        }
-
-        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-
-           // DispatchPage mydispath = new DispatchPage();
-            updateGauge2();
-           // updateGauge2();
-        }
-
-        public static void updateGauge2()
-        {
-            Random random = new Random();
-            int randomNumber = random.Next(0, 10);
-
-            arcScaleMarker.Value = randomNumber;// random.g(1,10);
-        }
+            
         public void updateLineGauge()
         {
 
@@ -139,7 +152,10 @@ namespace Uwp_App5.Views
 
         private void Load2_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            updateGauge2();
+           
         }
+
+
+
     }
 }
