@@ -15,10 +15,12 @@
 
             <controls11:TabView>
                 <controls11:TabViewItem Header="Tab 1">
+                    <Canvas>
+                       
 
-                    <StackPanel>
-                        <Gauges:CircularGauge Name="Gauge1">
-                            <Gauges:ArcScale StartValue="0" EndValue="12"
+                        <StackPanel>
+                        <Gauges:CircularGauge Name="gauge1">
+                            <!--<Gauges:ArcScale StartValue="0" EndValue="12"
                              StartAngle="-90" EndAngle="270"
                              MajorIntervalCount="12" MinorIntervalCount="5">
                                 <Gauges:ArcScale.Ranges>
@@ -29,27 +31,36 @@
                                 <Gauges:ArcScale.RangeBars>
                                     <Gauges:ArcScaleRangeBar AnchorValue="7" Value="3"/>
                                 </Gauges:ArcScale.RangeBars>
-                                <Gauges:ArcScale.Markers>
+                                <Gauges:ArcScale.Markers >
                                     <Gauges:ArcScaleMarker Value="7"/>
-                                </Gauges:ArcScale.Markers>
-                                <Gauges:ArcScale.Needles>
-                                    <Gauges:ArcScaleNeedle Value="3"/>
-                                    <Gauges:ArcScaleNeedle Value="12"/>
-                                </Gauges:ArcScale.Needles>
-                                <Gauges:ArcScale.LabelOptions>
+                                </Gauges:ArcScale.Markers>-->
+                                <!--<Gauges:ArcScale.Needles>
+                                    <Gauges:ArcScaleNeedle Value="4"/>
+                                    <Gauges:ArcScaleNeedle Value="10"/>
+                                </Gauges:ArcScale.Needles>-->
+                                <!--<Gauges:ArcScale.LabelOptions>
                                     <Gauges:ArcScaleLabelOptions ShowFirst="False"/>
                                 </Gauges:ArcScale.LabelOptions>
-                            </Gauges:ArcScale>
+                            </Gauges:ArcScale>-->
                         </Gauges:CircularGauge>
                     </StackPanel>
+                        <StackPanel>
+                            <Button Content="Load"  x:Name="Load" Click="Load2_Click"  />
+                        </StackPanel>
+
+                        <StackPanel>
+                           
+                        </StackPanel>
+                       
+                    </Canvas>
 
                 </controls11:TabViewItem>
                 
                 <controls11:TabViewItem Header="Tab 2">
                     <Canvas>
                         <StackPanel>
-                            <Gauges:LinearGauge Margin="20">
-                                <Gauges:LinearGauge.Scales>
+                            <Gauges:LinearGauge Margin="20" Name="LineGauge">
+                                <!--<Gauges:LinearGauge.Scales>
                                     <Gauges:LinearScale StartValue="-100" EndValue="100" MajorIntervalCount="20" >
                                         <Gauges:LinearScale.Ranges>
                                             <Gauges:LinearScaleRange StartValue="-100" EndValue="0"/>
@@ -59,13 +70,14 @@
                                             <Gauges:LinearScaleLevelBar Value="20" />
                                         </Gauges:LinearScale.LevelBars>
                                     </Gauges:LinearScale>
-                                </Gauges:LinearGauge.Scales>
+                                </Gauges:LinearGauge.Scales>-->
                             </Gauges:LinearGauge>
                         </StackPanel>
-                        
+                        <StackPanel>
+                            <Button Content="Load"  x:Name="Load1" Click="Load_Click"  />
+                        </StackPanel>
                         
                     </Canvas>
-
                 </controls11:TabViewItem>
             </controls11:TabView>
             
