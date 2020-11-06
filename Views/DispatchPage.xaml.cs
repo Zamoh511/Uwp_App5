@@ -9,6 +9,10 @@ using System.Runtime.InteropServices;
 using Windows.UI.Xaml.Controls;
 using System.Timers;
 using Windows.UI.Xaml;
+using System.Net;
+using System.IO;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Media;
 
 namespace Uwp_App5.Views
 {
@@ -37,8 +41,24 @@ namespace Uwp_App5.Views
                 OnPropertyChanged();
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
 
+        private BitmapImage fMainImage;
+        public BitmapImage MainImage
+        {
+            get { return fMainImage; }
+            set
+            {
+                if (fMainImage != value)
+                {
+                    fMainImage = value;
+                    OnPropertyChanged("MainImage");
+                }
+            }
+        }
+
+        //http://192.168.1.100/cgi-bin/viewer/video.jpg
+
+        public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (PropertyChanged != null)
@@ -47,6 +67,7 @@ namespace Uwp_App5.Views
             }
 
         }
+       
 
         private void SetFakeData()
         {
@@ -60,11 +81,30 @@ namespace Uwp_App5.Views
         {
             Random random = new Random();
             AirTemp = random.Next(0, 12);
-            //do
-            //{
-            //    AirTemp += 1;
 
-            //} while (AirTemp > 100);
+            //PictureBox.UriSource =  new Uri("http://192.168.1.100/cgi-bin/viewer/video.jpg");
+            BitmapImage bitmap = new BitmapImage();
+            
+            bitmap.UriSource= new Uri("http://192.168.1.100/cgi-bin/viewer/video.jpg");
+            PictureBox2.Source = bitmap;
+
+            try
+            {
+                //MainImage.Equals(new Uri("http://192.168.1.100/cgi-bin/viewer/video.jpg"));
+                //PictureBox.UriSource = MainImage;
+                //MainImage = new Uri("http://192.168.1.100/cgi-bin/viewer/video.jpg");
+                //PictureBox.UriSource = MainImage.UriSource;
+                //BitmapImage bitmapImage = new BitmapImage();
+                //bitmapImage.UriSource = new Uri("http://192.168.1.100/cgi-bin/viewer/video.jpg");
+                //MainImage = bitmapImage;
+                //PictureBox2 = MainImage;
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+
+            }
+
 
         }
 
@@ -139,7 +179,14 @@ namespace Uwp_App5.Views
             LineGauge.Scales.Add(linearScale);
 
         }
-
+        //public Image getImage()
+        //{
+        //    //WebClient wc = new WebClient();
+        //    //byte[] bytes = wc.DownloadData("http://192.168.1.100/cgi-bin/viewer/video.jpg");
+        //    //MemoryStream ms = new MemoryStream(bytes);
+        //    //System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+        //    //return img;
+        //}
         private void Load_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             updateGauge();

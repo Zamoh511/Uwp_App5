@@ -72,26 +72,21 @@
                 <controls11:TabViewItem Header="Tab 2">
                     <Canvas>
                         <StackPanel>
-                            <!--<Gauges:LinearGauge Margin="20" Name="LineGauge">
-                                <Gauges:LinearGauge.Scales>
-                                    <Gauges:LinearScale StartValue="-100" EndValue="100" MajorIntervalCount="20" >
-                                        <Gauges:LinearScale.Ranges>
-                                            <Gauges:LinearScaleRange StartValue="-100" EndValue="0"/>
-                                            <Gauges:LinearScaleRange StartValue="0" EndValue="100"/>
-                                        </Gauges:LinearScale.Ranges>
-                                        <Gauges:LinearScale.LevelBars>
-                                            <Gauges:LinearScaleLevelBar Value="{x:Bind AirTemp, Mode=TwoWay}" />
-                                        </Gauges:LinearScale.LevelBars>
-                                    </Gauges:LinearScale>
-                                </Gauges:LinearGauge.Scales>
-                            </Gauges:LinearGauge>-->
+                            <!--<Image>
+                                <Image.Source>
+                                    <BitmapImage x:Name="PictureBox" DecodePixelWidth="500" DecodePixelHeight="500"/>
+                                </Image.Source>
+                            </Image>-->
+                            <Image Name="PictureBox2" Width="800">
+                                
+                            </Image>
+
                         </StackPanel>
-                        <StackPanel>
-                           
-                        </StackPanel>
-                        <StackPanel>
+                        
+                       
+                        <!--<StackPanel>
                             <Button Content="Load"  x:Name="Load1" Click="Load_Click"  />
-                        </StackPanel>
+                        </StackPanel>-->
                         
                     </Canvas>
                 </controls11:TabViewItem>
