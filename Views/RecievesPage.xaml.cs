@@ -157,8 +157,8 @@ namespace Uwp_App5.Views
                 using (var uow = new UnitOfWork(inMemoryDAL))
                 {
                     XPCollection<Order_OrderIn> order_OrderIns = new XPCollection<Order_OrderIn>(uow);
-                    var list = order_OrderIns.Select(x => x.OrderNo).ToList();
-                    foreach (string item in list.Distinct())
+                    var list = order_OrderIns.Select(i => new { ID = (i.ID).ToString(), Name = i.OrderNo, JobCard = i.VesselIntakeID.JobCardNo }).ToList();
+                    foreach (var item in list.Distinct())
                     {
                         colorComboBox.Items.Add(item);
                     }
@@ -319,6 +319,29 @@ namespace Uwp_App5.Views
                 DisTotal.Text = (searchItem.Quantity).ToString();
                 RecTotal.Text = (searchItem.Quantity).ToString();
             }
+        }
+
+        private void search_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
+        {
+            var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            try
+            {
+                using (var uow = new UnitOfWork(inMemoryDAL))
+                {
+                    XPCollection<Order_OrderIn> orders = new XPCollection<Order_OrderIn>(uow);
+                    if (orders != null)
+                    {
+                        var list = orders.Select(i => new { ID = (i.ID).ToString(), Name = i.OrderNo, JobCard = i.VesselIntakeID.JobCardNo }).ToList().Where(a => a.Name.ToUpper().Contains(search.QueryText.ToUpper()));
+                        colorComboBox.ItemsSource = list;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+
+
         }
         public void insertSql()
         {

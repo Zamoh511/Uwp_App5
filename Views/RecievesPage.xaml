@@ -58,12 +58,19 @@
 
 
                         <StackPanel Margin="5">
+                            <SearchBox x:Name="search" Width="200" HorizontalAlignment="Left" QueryChanged="search_QueryChanged" MinWidth="200"></SearchBox>
 
-
-                            <ComboBox x:Name="colorComboBox" Width="200"
-                        Header="Orders" PlaceholderText="---Select Order---" SelectionChanged="ColorComboBox_SelectionChanged"
-                        >
-                                <ComboBoxItem></ComboBoxItem>
+                            <ComboBox x:Name="colorComboBox" Width="200"  Header="Orders" PlaceholderText="---Select Order---" SelectionChanged="ColorComboBox_SelectionChanged">
+                       
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding ID}"/>
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding JobCard}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
                             </ComboBox>
 
                         </StackPanel>
