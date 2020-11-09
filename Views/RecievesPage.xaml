@@ -43,7 +43,7 @@
                             <TextBox HorizontalAlignment="Left" MinWidth="200" x:Name="Newnew"  />
                         </StackPanel>-->
                         <StackPanel  Margin="5">
-                            <ComboBox x:Name="ImgCombobox" Header="Site" MinWidth="200">
+                            <ComboBox x:Name="ImgCombobox" Header="Site" MinWidth="200" PlaceholderText="---Select Site---" >
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">

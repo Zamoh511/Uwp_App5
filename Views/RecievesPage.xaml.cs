@@ -313,11 +313,11 @@ namespace Uwp_App5.Views
             var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
             using (var uow = new UnitOfWork(inMemoryDAL))
             {
-                XPQuery<Order_OrderIn> items = new XPQuery<Order_OrderIn>(uow);
-                Order_OrderIn searchItem = items.FirstOrDefault(i => i.OrderNo == (colorComboBox.SelectedValue.ToString()));
-                RecRemaining.Text = (searchItem.Quantity).ToString();
-                DisTotal.Text = (searchItem.Quantity).ToString();
-                RecTotal.Text = (searchItem.Quantity).ToString();
+                //XPQuery<Order_OrderIn> items = new XPQuery<Order_OrderIn>(uow);
+                //Order_OrderIn searchItem = items.FirstOrDefault(i => i.OrderNo == (colorComboBox.SelectedValue.ToString()));
+                //RecRemaining.Text = (searchItem.Quantity).ToString();
+                //DisTotal.Text = (searchItem.Quantity).ToString();
+                //RecTotal.Text = (searchItem.Quantity).ToString();
             }
         }
 
