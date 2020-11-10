@@ -13,6 +13,7 @@ using System.Net;
 using System.IO;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Media;
+using System.Collections.Generic;
 
 namespace Uwp_App5.Views
 {
@@ -67,7 +68,7 @@ namespace Uwp_App5.Views
             }
 
         }
-       
+
 
         private void SetFakeData()
         {

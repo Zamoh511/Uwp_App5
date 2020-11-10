@@ -56,17 +56,25 @@
                            
                         </StackPanel>
 
+                        <StackPanel>
+                            <my:GridControl x:Name="dxGrid1" AutoGenerateColumns="True" ShowFixedTotalSummary="False" SearchPanelAllowFilter="True" HorizontalAlignment="Left"  SearchColumns="Name"  ShowSearchPanelMode="Always" Width="300">
+                                <my:GridControl.Columns>
+
+                                </my:GridControl.Columns>
+                            </my:GridControl>
+                        </StackPanel>
+
 
                         <StackPanel Margin="5">
                             <SearchBox x:Name="search" Width="200" HorizontalAlignment="Left" QueryChanged="search_QueryChanged" MinWidth="200"></SearchBox>
 
-                            <ComboBox x:Name="colorComboBox" Width="200"  Header="Orders" PlaceholderText="---Select Order---" SelectionChanged="ColorComboBox_SelectionChanged">
+                            <ComboBox x:Name="colorComboBox" Width="200" IsTextSearchEnabled="True" IsEditable="True" Header="Orders" PlaceholderText="---Select Order---" SelectionChanged="ColorComboBox_SelectionChanged">
                        
-                                <ComboBox.ItemTemplate>
+                                <ComboBox.ItemTemplate >
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding ID}"/>
-                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding oName}"/>
                                             <TextBlock Text="{Binding JobCard}"/>
                                         </StackPanel>
                                     </DataTemplate>

@@ -116,6 +116,7 @@ namespace Uwp_App5.RapidCM_PGS_Dev
         }
         string fContainerNo;
         [Size(50)]
+        //[RuleRequiredField(DefaultContexts.Save)]
         public string ContainerNo
         {
             get { return fContainerNo; }

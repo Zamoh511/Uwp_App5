@@ -1,24 +1,19 @@
-﻿using DevExpress.Data.Filtering;
-using DevExpress.Xpo;
+﻿using DevExpress.Xpo;
+using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Uwp_App5.RapidCM_PGS_Dev;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System.Data;
-using System.Drawing;
-using Windows.UI.Xaml.Media.Imaging;
-using System.Threading.Tasks;
-using Windows.Storage.Streams;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Data.SqlClient;
-using System.Collections.Generic;
 using Windows.UI.Xaml.Data;
-using Microsoft.Toolkit.Uwp.UI.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Uwp_App5.Views
 {
@@ -26,7 +21,7 @@ namespace Uwp_App5.Views
     {
         public RecievesPage()
         {
-            
+
             InitializeComponent();
             insertSql();
             populateSQLcombo();
@@ -70,7 +65,7 @@ namespace Uwp_App5.Views
                     pr.TruckRegistration = newTruckReg.Text;
                     pr.ContainerNo = newContainer.Text;
                     //pr.ArrivalDate = datePacked.DateTime;
-                    pr.WBTicket = Convert.ToInt32(newWbTicket.Text); 
+                    pr.WBTicket = Convert.ToInt32(newWbTicket.Text);
                     uow.CommitChanges();
                     DisplayDialog();
                     PopulateGridControl();
@@ -177,7 +172,7 @@ namespace Uwp_App5.Views
                 using (var uow = new UnitOfWork(inMemoryDAL))
                 {
                     XPCollection<Library_Site> sites = new XPCollection<Library_Site>(uow);
-                    var list = sites.Select(i => new { Logo = ImageFromBytes(i.Logo), i.Name }).ToList();                  
+                    var list = sites.Select(i => new { Logo = ImageFromBytes(i.Logo), i.Name }).ToList();
                     foreach (var item in list.Distinct())
                     {
                         ImgCombobox.Items.Add(item);
@@ -230,7 +225,7 @@ namespace Uwp_App5.Views
                 using (var uow = new UnitOfWork(inMemoryDAL))
                 {
                     XPCollection<Library_Transporter> Library_Transporters = new XPCollection<Library_Transporter>(uow);
-                    var list = Library_Transporters.Select(i => new { ID = (i.ID).ToString(),Name= i.Name }).ToList();
+                    var list = Library_Transporters.Select(i => new { ID = (i.ID).ToString(), Name = i.Name }).ToList();
                     foreach (var item in list.Distinct())
                     {
                         ComboBoxItem comboItem = new ComboBoxItem();
@@ -254,6 +249,12 @@ namespace Uwp_App5.Views
                 using (var uow = new UnitOfWork(inMemoryDAL))
                 {
                     dataGrid1.ItemsSource = new XPCollection<Product_ProductReceive>(uow);
+                    //dxGrid1.Columns["ID"].View.OptionsBehavior.EditorShowMode = EditorShowMode.MouseUp;
+                    //dxGrid1. += gridView1_RowClick;
+
+                    
+                    dxGrid1.ItemsSource= new XPCollection<Library_Product>(uow);
+
                 }
             }
             catch (Exception ex)
@@ -261,6 +262,10 @@ namespace Uwp_App5.Views
                 var msg = ex.Message;
             }
         }
+        //private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        //{
+        //    //textEdit1.EditValue = (sender as GridView).GetFocusedRowCellValue("ID");
+        //}
 
         private void Click_Edit(object sender, RoutedEventArgs e)
         {
@@ -329,10 +334,15 @@ namespace Uwp_App5.Views
                 using (var uow = new UnitOfWork(inMemoryDAL))
                 {
                     XPCollection<Order_OrderIn> orders = new XPCollection<Order_OrderIn>(uow);
+
                     if (orders != null)
                     {
-                        var list = orders.Select(i => new { ID = (i.ID).ToString(), Name = i.OrderNo, JobCard = i.VesselIntakeID.JobCardNo }).ToList().Where(a => a.Name.ToUpper().Contains(search.QueryText.ToUpper()));
-                        colorComboBox.ItemsSource = list;
+                        colorComboBox.IsTextSearchEnabled = true;
+                        colorComboBox.IsEditable = true;
+                        var list = orders.Select(i => new { ID = (i.ID).ToString(), oName = i.OrderNo, JobCard = i.VesselIntakeID.JobCardNo }).ToList().Where(a => a.oName.ToUpper().Contains(search.QueryText.ToUpper())).ToString();
+                        colorComboBox.ItemsSource = list.ToString();
+                       
+
                     }
                 }
             }
@@ -342,6 +352,20 @@ namespace Uwp_App5.Views
             }
 
 
+
+        }
+        public class ViewModel
+        {
+            public string Name { get; set; }
+
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+        public override string ToString()
+        {
+            return Name;
         }
         public void insertSql()
         {
@@ -350,7 +374,7 @@ namespace Uwp_App5.Views
                 string queryString = "Select * from Library_Supplier";
                 using (SqlConnection connection = new SqlConnection(connectionString2))
                 {
-                    SqlCommand command = new SqlCommand(queryString, connection); 
+                    SqlCommand command = new SqlCommand(queryString, connection);
                     command.CommandType = CommandType.Text;
                     connection.Open();
                     SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
@@ -359,7 +383,7 @@ namespace Uwp_App5.Views
                     adapter.Fill(table);
 
                     dataGrid2.Columns.Clear();
-                    dataGrid2.AutoGenerateColumns = false;                   
+                    dataGrid2.AutoGenerateColumns = false;
 
                     for (int i = 0; i < table.Columns.Count; i++)
                     {
@@ -371,9 +395,9 @@ namespace Uwp_App5.Views
                     }
                     var collection = new ObservableCollection<object>();
                     foreach (DataRow row in table.Rows)
-                    {                      
-                        collection.Add(row.ItemArray);                      
-                    }                   
+                    {
+                        collection.Add(row.ItemArray);
+                    }
                     dataGrid2.ItemsSource = collection;
                 }
             }
@@ -408,8 +432,8 @@ namespace Uwp_App5.Views
                         SqlComboBox.Items.Add(boxItem);
                        
                     }
-                  
-                   
+
+
                 }
             }
             catch (Exception ex)
