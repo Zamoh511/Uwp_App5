@@ -140,10 +140,14 @@
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="Behaviors\NavigationViewHeaderBehavior.cs" />
     <Compile Include="Behaviors\NavigationViewHeaderMode.cs" />
+    <Compile Include="BindingHelper.cs" />
     <Compile Include="Controls\CameraControl.xaml.cs">
       <DependentUpon>CameraControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="EventHandlers\CameraControlEventArgs.cs" />
+    <Compile Include="GridComboBox.xaml.cs">
+      <DependentUpon>GridComboBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\CameraOrientationExtensions.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="ORMDataModel2Code\AccessControl.cs" />
@@ -662,6 +666,10 @@
     <Page Include="Controls\CameraControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GridComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Page.xaml">
       <Generator>MSBuild:Compile</Generator>

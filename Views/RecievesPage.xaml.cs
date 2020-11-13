@@ -1,6 +1,7 @@
 ﻿using DevExpress.Xpo;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
@@ -64,7 +65,6 @@ namespace Uwp_App5.Views
                     pr.DriverName = newDriver.Text;
                     pr.TruckRegistration = newTruckReg.Text;
                     pr.ContainerNo = newContainer.Text;
-                    //pr.ArrivalDate = datePacked.DateTime;
                     pr.WBTicket = Convert.ToInt32(newWbTicket.Text);
                     uow.CommitChanges();
                     DisplayDialog();
@@ -249,9 +249,6 @@ namespace Uwp_App5.Views
                 using (var uow = new UnitOfWork(inMemoryDAL))
                 {
                     dataGrid1.ItemsSource = new XPCollection<Product_ProductReceive>(uow);
-                    //dxGrid1.Columns["ID"].View.OptionsBehavior.EditorShowMode = EditorShowMode.MouseUp;
-                    //dxGrid1. += gridView1_RowClick;
-
                     
                     dxGrid1.ItemsSource= new XPCollection<Library_Product>(uow);
 
@@ -262,11 +259,7 @@ namespace Uwp_App5.Views
                 var msg = ex.Message;
             }
         }
-        //private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        //{
-        //    //textEdit1.EditValue = (sender as GridView).GetFocusedRowCellValue("ID");
-        //}
-
+       
         private void Click_Edit(object sender, RoutedEventArgs e)
         {
             try
@@ -296,7 +289,16 @@ namespace Uwp_App5.Views
                 var msg = ex.Message;
             }
         }
+        public XPCollection<Library_Product> myList()
+        {
+            var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            using (var uow = new UnitOfWork(inMemoryDAL))
+            {
 
+                return new XPCollection<Library_Product>(uow);
+            }
+          
+        }
         public void UpdateRecord(int id)
         {
             var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
@@ -354,19 +356,19 @@ namespace Uwp_App5.Views
 
 
         }
-        public class ViewModel
-        {
-            public string Name { get; set; }
+        //public class ViewModel
+        //{
+        //    public string Name { get; set; }
 
-            public override string ToString()
-            {
-                return Name;
-            }
-        }
-        public override string ToString()
-        {
-            return Name;
-        }
+        //    public override string ToString()
+        //    {
+        //        return Name;
+        //    }
+        //}
+        //public override string ToString()
+        //{
+        //    return Name;
+        //}
         public void insertSql()
         {
             try
@@ -429,8 +431,7 @@ namespace Uwp_App5.Views
                         ComboBoxItem boxItem = new ComboBoxItem();
                         boxItem.Tag = table.Rows[i]["ID"];
                         boxItem.Content = table.Rows[i]["Name"];
-                        SqlComboBox.Items.Add(boxItem);
-                       
+                        SqlComboBox.Items.Add(boxItem);                       
                     }
 
 
