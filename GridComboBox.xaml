@@ -33,7 +33,7 @@
                
             </SearchBox>
 
-            <Grid:GridControl Name="MyGrid" Height="100" Width="280"  AutoGenerateColumns="False" Margin="6,4,4,4" HorizontalAlignment="Left" MinWidth="200" >
+            <Grid:GridControl Name="MyGrid" Height="100" Width="280" SelectedItemChanged="MyGrid_SelectionChanged" AutoGenerateColumns="False" Margin="6,4,4,4" HorizontalAlignment="Left" MinWidth="200" SummariesIgnoreNullValues="True" >
                 <Grid:GridControl.Columns>
                     <Grid:GridTextColumn FieldName="OrderNo" />
                     <Grid:GridTextColumn FieldName="OrderDate" />

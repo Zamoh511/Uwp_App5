@@ -1,6 +1,7 @@
 ﻿using DevExpress.Xpo;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -93,8 +94,7 @@ namespace Uwp_App5
                     MyGrid.ItemsSource = orders;
                     if (orders != null)
                     {
-                        //colorComboBox.IsTextSearchEnabled = true;
-                        //colorComboBox.IsEditable = true;
+                        
                         var list = orders.Where(a => a.OrderNo.ToUpper().Contains(search.QueryText.ToUpper()));
                         MyGrid.ItemsSource = list;
                         MyGrid.Height = 400;
@@ -128,6 +128,15 @@ namespace Uwp_App5
             {
                 var msg = ex.Message;
             }
+        }
+
+        private void MyGrid_SelectionChanged(object sender, DevExpress.UI.Xaml.Grid.SelectedItemChangedEventArgs e)
+        {
+            //var item = e;
+            int id = ((Uwp_App5.RapidCM_PGS_Dev.Order_OrderIn)e.NewItem).ID;
+
+            MyGrid.Height = 100;
+            MyGrid.Width = 280;
         }
     }
 }

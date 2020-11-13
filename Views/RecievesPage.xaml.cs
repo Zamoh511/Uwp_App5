@@ -353,12 +353,9 @@ namespace Uwp_App5.Views
                 var msg = ex.Message;
             }
 
-
-
         }
        
-
-       
+      
         public void insertSql()
         {
             try
