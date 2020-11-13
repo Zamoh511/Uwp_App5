@@ -356,19 +356,9 @@ namespace Uwp_App5.Views
 
 
         }
-        //public class ViewModel
-        //{
-        //    public string Name { get; set; }
+       
 
-        //    public override string ToString()
-        //    {
-        //        return Name;
-        //    }
-        //}
-        //public override string ToString()
-        //{
-        //    return Name;
-        //}
+       
         public void insertSql()
         {
             try

@@ -26,6 +26,7 @@ namespace Uwp_App5
         {
             this.InitializeComponent();
             PopulateGridControl();
+            populateGrid();
         }
 
         const string connectionString = @"XpoProvider=MSSqlServer;data source=DESKTOP-32QVBUV\SQL2017;user id=201619;password=pPqtKc19;initial catalog=RapidCM_PGS_Dev;Persist Security Info=true";
@@ -64,7 +65,23 @@ namespace Uwp_App5
         {
 
         }
-
+        public void populateGrid()
+        {
+            var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            try
+            {
+                using (var uow = new UnitOfWork(inMemoryDAL))
+                {
+                    XPCollection<Order_OrderIn> orders = new XPCollection<Order_OrderIn>(uow);
+                    MyGrid.ItemsSource = orders;
+                    MyGrid.Width = 280;
+                }
+            }
+            catch (Exception ex)
+            {
+                var MSG = ex.Message;
+            }
+        }
         private void search_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
         {
             var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
@@ -80,7 +97,9 @@ namespace Uwp_App5
                         //colorComboBox.IsEditable = true;
                         var list = orders.Where(a => a.OrderNo.ToUpper().Contains(search.QueryText.ToUpper()));
                         MyGrid.ItemsSource = list;
-
+                        MyGrid.Height = 400;
+                        MyGrid.Width = 600;
+                        
 
                     }
                 }

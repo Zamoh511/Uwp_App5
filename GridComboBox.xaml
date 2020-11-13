@@ -3,25 +3,44 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Uwp_App5"
+    xmlns:Grid="using:DevExpress.UI.Xaml.Grid"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:my1="using:DevExpress.UI.Xaml.Grid"
              mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
+  
+        
+        <UserControl.Resources>
+            <Flyout x:Name="TravelFlyout" x:Key="TravelFlyout">
+                
+                <StackPanel>
+                    <HyperlinkButton Content="Washington Trails Association"/>
+                    <HyperlinkButton Content="Washington Cascades - Go Northwest! A Travel Guide"/>
+                </StackPanel>
+            </Flyout>
+        </UserControl.Resources>
+
+        <Grid>
 
         <StackPanel Orientation="Vertical">
             <TextBlock>
                 Search Item:
             </TextBlock>
-            <SearchBox x:Name="search" Width="280" Margin="6,4,4,4" HorizontalAlignment="Left" QueryChanged="search_QueryChanged" MinWidth="200"></SearchBox>
-
-            <my1:GridControl Name="MyGrid" Height="100" Width="280"   Margin="6,4,4,4" HorizontalAlignment="Left" MinWidth="200" >
-                
+            
+            <SearchBox x:Name="search" Width="280" Margin="6,4,4,4" HorizontalAlignment="Left" QueryChanged="search_QueryChanged" MinWidth="200" >
                
+            </SearchBox>
 
-            </my1:GridControl>
+            <Grid:GridControl Name="MyGrid" Height="100" Width="280"  AutoGenerateColumns="False" Margin="6,4,4,4" HorizontalAlignment="Left" MinWidth="200" >
+                <Grid:GridControl.Columns>
+                    <Grid:GridTextColumn FieldName="OrderNo" />
+                    <Grid:GridTextColumn FieldName="OrderDate" />
+                    <Grid:GridTextColumn FieldName="Quantity" />
+                </Grid:GridControl.Columns>
+
+            </Grid:GridControl>
         </StackPanel>
 
 
