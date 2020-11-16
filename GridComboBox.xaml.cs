@@ -38,6 +38,15 @@ namespace Uwp_App5
 
         }
 
+        public int OrderId
+        {
+            get { return (int)GetValue(OrderIdProperty); }
+            set { SetValue(OrderIdProperty, value); }
+
+        }
+
+        public DependencyProperty OrderIdProperty = DependencyProperty.Register("OrderId", typeof(int), typeof(GridComboBox), null);
+
         public DependencyProperty textblockProperty = DependencyProperty.Register("textblock", typeof(string), typeof(GridComboBox),null);
         public ImageSource imageSource
         {
@@ -115,7 +124,7 @@ namespace Uwp_App5
         public void PopulateGridControl()
         {
             
-            textblock = "Testing";
+            //textblock = "Testing";
             var inMemoryDAL = XpoDefault.GetDataLayer(connectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
             try
             {
@@ -133,7 +142,7 @@ namespace Uwp_App5
         private void MyGrid_SelectionChanged(object sender, DevExpress.UI.Xaml.Grid.SelectedItemChangedEventArgs e)
         {
             //var item = e;
-            int id = ((Uwp_App5.RapidCM_PGS_Dev.Order_OrderIn)e.NewItem).ID;
+            OrderId = ((Uwp_App5.RapidCM_PGS_Dev.Order_OrderIn)e.NewItem).ID;
 
             MyGrid.Height = 100;
             MyGrid.Width = 280;
