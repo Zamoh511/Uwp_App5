@@ -177,4 +177,8 @@
     <value>DataGrid</value>
     <comment>Navigation view item name for DataGrid</comment>
   </data>
+  <data name="Shell_Account_Login.Content" xml:space="preserve">
+    <value>Account_Login</value>
+    <comment>Navigation view item name for Account_Login</comment>
+  </data>
 </root>

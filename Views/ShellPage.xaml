@@ -32,6 +32,7 @@
             <winui:NavigationViewItem x:Uid="Shell_Recieves" Icon="Document" helpers:NavHelper.NavigateTo="views:RecievesPage" />
             <winui:NavigationViewItem x:Uid="Shell_Dispatch" Icon="Document" helpers:NavHelper.NavigateTo="views:DispatchPage" />
             <winui:NavigationViewItem x:Uid="Shell_DataGrid" Icon="Document" helpers:NavHelper.NavigateTo="views:DataGridPage" />
+            <winui:NavigationViewItem x:Uid="Shell_Account_Login" Icon="Document" helpers:NavHelper.NavigateTo="views:Account_LoginPage" />
         </winui:NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior

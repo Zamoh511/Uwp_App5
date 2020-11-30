@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="Uwp_App5.Views.Account_LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:BoldReports="using:BoldReports.UI.Xaml"
+    xmlns:Reports="using:Syncfusion.UI.Xaml.Reports"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+
+            <StackPanel>
+                <StackPanel>
+                    <TextBox Name="username"/>
+                    <TextBox Name="password"/>
+                    <Button Name="login" Click="login_Click" Content="Submit" />
+
+                </StackPanel>
+                <StackPanel>
+                    <Reports:SfReportViewer x:Name="ReportViewer"/>
+                    <!--<BoldReports:ReportViewer Name="ReportViewer"/>-->
+
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Page>

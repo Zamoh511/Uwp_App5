@@ -313,7 +313,7 @@ namespace Uwp_App5.Views
         }
         private void SupplierComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            DisplayDialog();
         }
         private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
